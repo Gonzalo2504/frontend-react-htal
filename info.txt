@@ -1,0 +1,43 @@
+return (  
+    <div className="h-screen flex justify-center items-center bg-no-repeat bg-cover bg-center shadow-2xl">
+      {error && <p className="text-white">{error}</p>}
+      <form onSubmit={handleSubmit} className="max-w-sm m-4 p-10 bg-gray-800 bg-opacity-50 rounded shadow-xl">
+        <p className="text-white text-center text-lg font-bold">LOGIN</p>
+        <div className="">
+          <label className="block text-sm text-white">Usuario</label>
+          <input
+            className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none"
+            type="text"
+            id="user"
+            placeholder="Ingrese su usuario"
+            aria-label="user"
+            required
+            value={usuario}
+            onChange={(e) => setUsuario(e.target.value)}
+          />
+        </div>
+        <div className="mt-2">
+          <label className="block  text-sm text-white">Contraseña</label>
+          <input
+            className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none"
+            type="password"
+            id="password"
+            placeholder="Ingrese su contraseña"
+            aria-label="password"
+            required
+            value={contrasena}
+            onChange={(e) => setContrasena(e.target.value)}
+          />
+        </div>
+
+        <div className="mt-4 items-center flex justify-between">
+          <button
+            className="px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded"
+            type="submit"
+          >
+            Entrar
+          </button>
+        </div>
+      </form>
+    </div>
+  );
