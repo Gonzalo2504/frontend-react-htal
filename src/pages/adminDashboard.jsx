@@ -1,12 +1,12 @@
-import { ButtonColors } from "../components/botonescrud";
 import { ComplexNavbar } from "../components/nav";
-import { TabsDefaultAdmin } from "../components/pestañas";
+import { TabsDefault } from "../components/pestañas";
+import { data } from "../data/adminData";
 
 export default function AdminDashboard() {
     return (
         <div>
             <ComplexNavbar />
-            <TabsDefaultAdmin />            
+            <TabsDefault data={data} />            
         </div>
     );
 }
