@@ -1,12 +1,13 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
-const ProtectedRoute = ({ children, rolId: requiredRolId }) => {
+const ProtectedRoute = ({ children, RolId}) => {
   const token = localStorage.getItem('token');
   const location = useLocation();
-  const userRolId = 1; // Assuming a default value for user's role ID
+  const decodedToken = JSON.parse(atob(access_token.split(".")[1]));
+  const rol_id = decodedToken.rol_id;
 
-  if (!token || userRolId !== requiredRolId) {
+  if (!token || rol_id !== RolId) {
     return <Navigate to="/" state={{ from: location }} replace />;
   }
 
@@ -14,3 +15,4 @@ const ProtectedRoute = ({ children, rolId: requiredRolId }) => {
 };
 
 export default ProtectedRoute;
+
