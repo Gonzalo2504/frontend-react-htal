@@ -1,18 +1,28 @@
-export const data = [
+import { getPacientes } from "../api/admin/adminRequest";
+
+export const dataAdmin = [
       {
         label: "Pacientes",
         value: "pacientes",
         desc: `En esta seccion podras consultar, eliminar, editar y crear pacientes.`,
         btns: [
             {
+              color : "blue",
+              texto: "Ver Pacientes",
+              onClick: getPacientes,
+            },
+            {
+              color : "green",
               texto: "Crear Paciente",
               onClick: () => console.log("Crear paciente"),
             },
             {
+              color : "yellow",
               texto: "Editar Paciente",
               onClick: () => console.log("Editar paciente"),
             },
             {
+              color : "red",
               texto: "Borrar Paciente",
               onClick: () => console.log("Borrar paciente"),
             },
@@ -24,15 +34,23 @@ export const data = [
         desc: `En esta seccion podras consultar, eliminar, editar y crear cuentas de medicos.`,
         btns: [
             {
-              texto: "Crear Paciente",
+              color : "blue",
+              texto: "Ver Medicos",
               onClick: () => console.log("Crear paciente"),
             },
             {
-              texto: "Editar Paciente",
+              color : "green",
+              texto: "Crear Medico",
+              onClick: () => console.log("Crear paciente"),
+            },
+            {
+              color : "yellow",
+              texto: "Editar Medico",
               onClick: () => console.log("Editar paciente"),
             },
             {
-              texto: "Borrar Paciente",
+              color : "red",
+              texto: "Borrar Medico",
               onClick: () => console.log("Borrar paciente"),
             },
           ]      },
@@ -42,15 +60,23 @@ export const data = [
         desc: `En esta seccion podras consultar, eliminar, editar y crear cuentas de enfermeros.`,
         btns: [
             {
-              texto: "Crear Paciente",
+              color : "blue",
+              texto: "Ver Enfermeros",
               onClick: () => console.log("Crear paciente"),
             },
             {
-              texto: "Editar Paciente",
+              color : "green",
+              texto: "Crear Enfermero",
+              onClick: () => console.log("Crear paciente"),
+            },
+            {
+              color : "yellow",
+              texto: "Editar Enfermero",
               onClick: () => console.log("Editar paciente"),
             },
             {
-              texto: "Borrar Paciente",
+              color : "red",
+              texto: "Borrar Enfermero",
               onClick: () => console.log("Borrar paciente"),
             },
           ]      }

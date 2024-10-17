@@ -23,12 +23,7 @@ export function TabsDefault({ data }) {
               {desc}
               <div className="mt-4">
                 <ButtonColors
-                  texto1={btns[0].texto}
-                  texto2={btns[1].texto}
-                  texto3={btns[2].texto}
-                  onClick1={btns[0].onClick}
-                  onClick2={btns[1].onClick}
-                  onClick3={btns[2].onClick}
+                  data={btns}
                 />
               </div>
             </div>

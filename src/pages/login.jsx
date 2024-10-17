@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Card, Input, Button, CardBody, CardHeader, Typography } from "@material-tailwind/react";
+import {
+  Card,
+  Input,
+  Button,
+  CardBody,
+  CardHeader,
+  Typography,
+} from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 
 export function CryptoLogin() {
@@ -123,4 +130,3 @@ export function CryptoLogin() {
     </div>
   );
 }
-
