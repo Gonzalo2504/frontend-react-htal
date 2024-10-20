@@ -161,3 +161,4 @@ export function ComplexNavbar({ rol_id }) {
   );
 }
 
+export default ComplexNavbar;

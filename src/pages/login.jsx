@@ -120,7 +120,7 @@ export function CryptoLogin() {
                 onChange={(e) => setContrasena(e.target.value)}
               />
             </div>
-            {error && <p className="text-white">{error}</p>}
+            {error && <p className="text-red-500">{error}</p>}
             <Button size="lg" color="gray" fullWidth type="submit">
               Ingresar
             </Button>
