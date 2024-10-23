@@ -6,10 +6,9 @@ import { useState } from "react";
 export const TabsDefault = ({ data, setActiveTab }) => {
   const [activeTab, setActiveTabLocal] = useState(data[0].value);
 
-  const handleTabChange = (value) => {
-    console.log(`se ha presionado la pesta a con valor: ${value}`);
+  const handleTabChange = (value) => { 
     setActiveTabLocal(value);
-    setActiveTab(value); // Actualiza el estado en AdminDashboard
+    setActiveTab(value); 
   };
 
   return (
@@ -36,3 +35,5 @@ export const TabsDefault = ({ data, setActiveTab }) => {
     </Tabs>
   );
 };
+
+export default TabsDefault;

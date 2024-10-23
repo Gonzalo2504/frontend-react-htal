@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
-export function TableWithSearch({ data }) {
+export function TableWithSearch({ data, hooks }) {
   const TABLE_HEAD = Object.keys(data[0]);
 
   return (
@@ -54,7 +54,7 @@ export function TableWithSearch({ data }) {
                       variant="small"
                       className="font-normal text-gray-600"
                     >
-                      {row[head]}
+                      {hooks[head] ? hooks[head](row[head]) : row[head]}
                     </Typography>
                   </td>
                 ))}
@@ -68,3 +68,4 @@ export function TableWithSearch({ data }) {
 }
 
 export default TableWithSearch;
+
