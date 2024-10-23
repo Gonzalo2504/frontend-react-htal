@@ -20,7 +20,7 @@ export function TableWithSearch({ data }) {
       >
         <div className="w-full md:w-96">
           <Input
-            label="Search Invoice"
+            label="Buscar"
             icon={<MagnifyingGlassIcon className="h-5 w-5" />}
           />
         </div>
