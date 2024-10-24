@@ -1,51 +1,66 @@
-import React, { useState, useEffect } from 'react';
-import usePacientes from '../hooks/usePacientes';
-import useMedicos from '../hooks/useMedicos';
-import useEnfermeros from '../hooks/useEnfermero';
-import ComplexNavbar from '../components/nav';
-import TabsDefault from '../components/pestañas';
-import AlertDefault from '../components/alerta';
-import TableWithSearch from '../components/tabladedatos';
-import dataAdmin from '../data/adminData';
-import { getPacientes, getMedicos, getEnfermeros } from '../api/admin/adminRequest';
+import React, { useState, useEffect } from "react";
+import ComplexNavbar from "../components/nav";
+import TabsDefault from "../components/pestañas";
+import dataAdmin from "../data/adminData";
+import {
+  getPacientes,
+  getMedicos,
+  getEnfermeros,
+} from "../api/admin/adminRequest";
+import MUIDataTable from "mui-datatables";
 
 const AdminDashboard = () => {
-  const [activeTab, setActiveTab] = useState('pacientes');
   const [data, setData] = useState([]);
-  const [message, setMessage] = useState('');
-
-  const { pacientesProcesados, loadingPacientes } = usePacientes(getPacientes);
-  const { medicosProcesados, loadingMedicos } = useMedicos(getMedicos);
-  const { enfermerosProcesados, loadingEnfermeros } = useEnfermeros(getEnfermeros);
+  const [columns, setColumns] = useState([]);
+  const [activeTab, setActiveTab] = useState(" ");
 
   useEffect(() => {
     const fetchData = async () => {
       switch (activeTab) {
-        case 'pacientes':
-          setData(pacientesProcesados);
-          setMessage(`Pacientes: ${pacientesProcesados.length}`);
+        case "pacientes":
+          const pacientes = await getPacientes();
+          const columnsPacientes = Object.keys(pacientes[0]).map((key) => ({
+            name: key,
+            selector: key,
+          }));
+          setColumns(columnsPacientes);
+          setData(pacientes);
           break;
-        case 'medicos':
-          setData(medicosProcesados);
-          setMessage(`Médicos: ${medicosProcesados.length}`);
+        case "medicos":
+          const medicos = await getMedicos();
+          const columnsMedicos = Object.keys(medicos[0]).map((key) => ({
+            name: key,
+            selector: key,
+          }));
+          setColumns(columnsMedicos);
+          setData(medicos);
           break;
-        case 'enfermeros':
-          setData(enfermerosProcesados);
-          setMessage(`Enfermeros: ${enfermerosProcesados.length}`);
+        case "enfermeros":
+          const enfermeros = await getEnfermeros();
+          const columnsEnfermeros = Object.keys(enfermeros[0]).map((key) => ({
+            name: key,
+            selector: key,
+          }));
+          setColumns(columnsEnfermeros);
+          setData(enfermeros);
           break;
         default:
-          break;
+          console.log("No se encontró un caso válido");
       }
     };
+
     fetchData();
-  }, [activeTab, pacientesProcesados, medicosProcesados, enfermerosProcesados]);
+  }, [activeTab]);
 
   return (
     <div>
       <ComplexNavbar />
       <TabsDefault data={dataAdmin} setActiveTab={setActiveTab} />
-      <AlertDefault message={message} />
-      <TableWithSearch data={data} />
+      <MUIDataTable
+        title={"Employee List"}
+        data={data}
+        columns={columns}
+      />
     </div>
   );
 };
